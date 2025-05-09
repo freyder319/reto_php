@@ -15,6 +15,6 @@ $query->bind_param("ii", $id_tarea, $usuario_id);
 $query->execute();
 $query->close();
 $conexion->close();
-header("Location: tareas.php");
+header("Location: tareas.php?");
 exit;
 ?>

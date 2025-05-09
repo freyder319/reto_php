@@ -22,26 +22,49 @@ $resultado = $conexion->query("SELECT * FROM tareas WHERE usuario_id = '$usuario
     <a href="nueva_tarea.php">Añadir nueva tarea</a>
     <br><br>
     <div>
+        <table border="1px solid black">
+            <tr>
+                <td>Id</td>
+                <td>Titulo</td>
+                <td>Descripcion</td>
+                <td>Estado</td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+                <td>Marcar como completada</td>
+            </tr>
         <?php 
         $contador=1;
         while ($tarea = $resultado->fetch_assoc()) { ?>
-            <br>
+            <tr>
                 <?php
+                echo "<td>";
                 echo "Tarea N°". $contador;
+                echo "</td>";
                 echo "<br>";
                 $contador+=1
                 ?>
-                <?php echo $tarea['titulo']; ?> - <?php echo $tarea['descripcion']; ?>
+                <?php echo "<td>"; echo $tarea['titulo'];  ?></td> <td> <?php echo $tarea['descripcion']; ?></td>
+                
+                <td>
+                <?php echo $tarea['completada'] ? " Completada" : " Pendiente"; ?></td>
                 <br>
-                Estado: <?php echo $tarea['completada'] ? " Completada" : " Pendiente"; ?>
-                <br>
-                <a href="editar_tarea.php?id=<?php echo $tarea['id']; ?>">Editar</a>
-                <br>
-                <a href="eliminar_tarea.php?id=<?php echo $tarea['id']; ?>">Eliminar</a>
-                <br>
-                <a href="completar_tarea.php?id=<?php echo $tarea['id']; ?>">Marcar como completada</a>
-            <br>
+                <td> <a href="editar_tarea.php?id=<?php echo $tarea['id']; ?>">Editar</a></td>
+                <td> <a href="eliminar_tarea.php?id=<?php echo $tarea['id']; ?>">Eliminar</a></td>
+                <td>
+                <?php 
+                    if ($tarea['completada']==1){
+
+                    }else{
+                        ?>
+                         <a href="completar_tarea.php?id=<?php echo $tarea['id']; ?>">Marcar como completada</a>
+                        <?php
+                        
+                    }
+                ?>
+                </td>
+            </tr>
         <?php } ?>
+        </table>
     </div>
     <br>
     -----------------------------------------

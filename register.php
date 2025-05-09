@@ -12,7 +12,7 @@
     <input type="text" name="nombre">
     <br><br>
     Correo Electronico:
-    <input type="text" name="correo">
+    <input type="email" name="correo">
     <br><br>
     Contraseña:
     <input type="password" name="contra">
@@ -23,8 +23,11 @@
     <?php
         if (isset($_REQUEST['error'])){
             echo "Contraseñas no coinciden";
+        }elseif(isset($_REQUEST['registrado'])){
+            echo "usuario Registrado";
         }
     ?>
+    
     <br><br>
     <input type="submit" value="Registrar">
     </form>

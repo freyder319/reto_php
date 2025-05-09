@@ -6,13 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-<?php 
-$contrasena=$_POST['contrasena'];
-$confirmarcontra=$_REQUEST['confirmarcontra'];
-if ($contrasena!=$confirmarcontra){
-    header("Location: register.php?error=1");
-}else{
-    $conn = new mysqli('localhost', 'root', '', 'base1');
+    <?php 
+    $contrasena=$_REQUEST['contra'];
+    $confirmarcontra=$_REQUEST['confirmarcontra'];
+    if ($contrasena==$confirmarcontra){
+        $conn = new mysqli('localhost', 'root', '', 'base1');
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nombre'];
             $correo = $_POST['correo'];
@@ -26,8 +24,11 @@ if ($contrasena!=$confirmarcontra){
         } else {
             echo "Error: " . $stmt->error;
         }
-        $stmt->close();
-}}
+        $stmt->close();}
+    }else{       
+        header("Location: register.php?error=error");
+    }
+
 ?>
 </body>
 </html>

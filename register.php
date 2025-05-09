@@ -32,7 +32,7 @@
     <input type="submit" value="Registrar">
     </form>
     <br><br>
-    Estas Registrado? <a href="login.php">Iniciar Sesion</a>
+    Estas Registrado? <a href="index.php">Iniciar Sesion</a>
 </body>
 </html>
 
